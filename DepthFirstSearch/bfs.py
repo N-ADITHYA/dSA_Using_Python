@@ -1,16 +1,25 @@
-"""
-Python Data Structures - A Game-Based Approach
-BFS maze solver.
-Robin Andrews - https://compucademy.net/
-The queue contains positions as (row, column) tuples. Predecessors are kept in a dictionary.
-"""
+
 
 from helpers import get_path, offsets, is_legal_pos, read_maze
-from queue_ll import Queue
+from Stack import Stack
 
 
 def bfs(maze, start, goal):
-    pass
+    stack = Stack()
+    stack.push(start)
+    predecessors = {start: None}
+
+    while not stack.is_empty():
+        current_cell = stack.pop()
+        if current_cell == goal:
+            return get_path(predecessors, start, goal)
+        for direction in ["up", "down", "left", "right"]:
+            row_offset, column_offset = offsets[direction]
+            neighbour = (current_cell[0] + row_offset, current_cell[1] + column_offset)
+            if is_legal_pos(maze, neighbour) and neighbour not in predecessors:
+                stack.push(neighbour)
+                predecessors[neighbour] = current_cell
+    return None
 
 
 if __name__ == "__main__":

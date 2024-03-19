@@ -26,7 +26,12 @@ class Stack:
         return str(self.items)
 
 if __name__ == "__main__":
-    pass
+    s = Stack()
+
+    s.push(89)
+    s.pop()
+    s.peek()
+    print(s)
 
 
 

@@ -1,8 +1,3 @@
-"""
-Python Data Structures and Algorithms - A Game-Based Approach
-Helper functions and values for use with other files in this project.
-Robin Andrews - https://compucademy.net/
-"""
 
 offsets = {
     "right": (0, 1),
